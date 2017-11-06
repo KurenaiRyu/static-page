@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>图书管理系统</title>
+    <link href="css/zui.min.css" rel="stylesheet">
+    <link href="css/zui-theme.css" rel="stylesheet">
+    <link href="lib/datatable/zui.datatable.min.css" rel="stylesheet">
+    <link href="css/header.css" rel="stylesheet">
+    <link href="css/footer.css" rel="stylesheet">
+    <script>
+    </script>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">图书管理系统</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="book-search.html">图书管理</a></li>
+                <li class="active"><a href="#">借阅管理</a></li>
+                <li><a href="user-search.html">用户管理</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown dropdown-hover">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">WelCome，XXX!</a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-right" role="search">
+                <div class="input-group">
+                    <span class="input-group">
+                        <div class="input-group-btn">
+                            <!--<button type="button" class="btn btn-default dropdown-toggle nav-select-btn" data-toggle="dropdown">快速查找 <span class="caret"></span></button>-->
+                            <!--<ul class="dropdown-menu pull-right nav-select" role="menu">-->
+                            <!--<li><a href="javascript:void(0);" onclick="c(0)">快速查找</a></li>-->
+                            <!--<li><a>另一个选项</a></li>-->
+                            <!--<li><a>更多选项</a></li>-->
+                            <!--<li class="divider"></li>-->
+                            <!--<li><a>特别内容</a></li>-->
+                            <!--</ul>-->
+                            <select class="form-control" name="search_mod" style="border-top-left-radius: 4px; border-bottom-left-radius: 4px">
+                                <option value="fast">期间借阅</option>
+                                <option value="name"> - 按书名查找</option>
+                                <option value="author"> - 按作者查找</option>
+                                <option value="publisher"> - 按出版社查找</option>
+                                <option value="ISBN"> - 按ISBN查找</option>
+                                <option value="sNo"> - 按学号查找</option>
+                                <option value="sNo">过期借阅</option>
+                                <option value="sNo">已归还借阅</option>
+                            </select>
+                        </div>
+                        <input type="text" name="name" class="form-control" placeholder="搜索借阅...">
+                        <div class="input-group-btn">
+                            <button class="btn" type="submit"><i class="icon icon-search"></i></button>
+                        </div>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </nav>
+</header>
+<div calss="content">
+    <div class="container">
+        <div class="alert alert-info alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <div class="content">
+                <p>您可以通过页面右上角搜索框进行查询</p>
+                <hr>
+                <strong>编辑无法批量操作</strong>
+            </div>
+        </div>
+
+        <p>
+        <div class="btn-group">
+            <button type="button" class="btn" onclick="location.href='borrow-add.html'"> 添加</button>
+            <button type="button" class="btn disabled btn-sp one-item-only" onclick="location.href='borrow-add.html'"> 编辑</button>
+            <button type="button" class="btn disabled btn-sp" onclick="location.href='borrow-add.html'"> 延期</button>
+            <button type="button" class="btn btn-primary disabled btn-sp" data-toggle="modal" data-target="#Book"> 归还</button>
+            <button type="button" class="btn btn-danger disabled btn-sp" data-toggle="modal" data-target="#delBook"> 删除</button>
+        </div>
+        </p>
+
+        <div class="modal fade" id="Book">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                    <h4 class="modal-title">归还状态</h4>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="radioOptionsExample" value="1"> 完好
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="radioOptionsExample" value="2"> 破损
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="delBook">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                    <h4 class="modal-title">注意</h4>
+                </div>
+                <div class="modal-body">
+                    <p>您确定想要删除选中的记录吗？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-danger">删除</button>
+                </div>
+            </div>
+        </div>
+
+        <table class="table datatable table-bordered">
+
+        </table>
+
+        <div id="pager" style="text-align: center">
+            <ul class="pager pager-pills">
+                <li class="previous"><a href="#">«</a></li>
+                <li><a href="#">1</a></li>
+                <li class="active"><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li class="next"><a href="#">»</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="container">
+        <hr>
+        <h5>Power by Kurenai</h5>
+    </div>
+</footer>
+<!--<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>-->
+<script src="js/jquery.min.js"></script>
+<script src="js/zui.min.js"></script>
+<script src="lib/datatable/zui.datatable.min.js"></script>
+<script>
+    /* 初始化数据表格 */
+    $('table.datatable').datatable({
+        data: {
+            cols: [
+                {width: 40, text: '#', type: 'number', flex: false, colClass: 'text-center'},
+                {width: 160, text: '学号', type: 'string', flex: false, sort: ''},
+                {width: 160, text: '书名', type: 'string', flex: false, sort: ''},
+                {width: 160, text: '借阅时间', type: 'date', flex: false, sort: ''},
+                {width: 160, text: '过期时间', type: 'date', flex: false, sort: ''},
+                {width: 100, text: '作者', type: 'string', flex: false, colClass: ''},
+                {width: 100, text: '出版社', type: 'string', flex: false, colClass: ''},
+                {width: 100, text: 'ISBN', type: 'string', flex: false, colClass: ''}
+            ],
+            rows: [
+                {checked: false, data: [1, '123', '梦里花落知多少梦里花落知多少梦里花落知', '2017-10-1', '2018-10-1', '郭敬明', 'XXX出版社', '111-1111-1111-111']},
+                {checked: false, data: [1, '123', '梦里花落知多少梦里花落知多少梦里花落知', '2017-10-1', '2018-10-1', '郭敬明', 'XXX出版社', '111-1111-1111-111']},
+                {checked: false, data: [1, '123', '梦里花落知多少梦里花落知多少梦里花落知', '2017-10-1', '2018-10-1', '郭敬明', 'XXX出版社', '111-1111-1111-111']},
+                {checked: false, data: [1, '123', '梦里花落知多少梦里花落知多少梦里花落知', '2017-10-1', '2018-10-1', '郭敬明', 'XXX出版社', '111-1111-1111-111']}
+            ]
+        },
+        checkable: true,
+        sortable: true
+    }).on("checksChanged.zui.datatable", function (event) {
+        // 获取数据表格实例对象
+        var myDatatable = $('table.datatable').data('zui.datatable');
+
+        // 获取行选中数据
+        var checksStatus = myDatatable.checks;
+
+        if (checksStatus.checks.length > 0) {
+            $('.btn-sp').removeClass('disabled')
+        } else {
+            $('.btn-sp').addClass('disabled')
+        }
+        if (checksStatus.checks.length > 1) {
+            $('.one-item-only').addClass('disabled')
+        }
+    });
+
+    //分页按钮
+    $("#pager a").click(function (e) {
+        $("#pager .active").removeClass('active');
+        $(this).parent().addClass('active')
+    })
+
+    //    $(".nav-select>li>a").click(function (e) {
+    //        $(".nav-select-btn").html($(this).html()+" <span class=\"caret\"></span>")
+    //    })
+</script>
+</body>
+</html>

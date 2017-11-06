@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>图书管理系统</title>
+    <link href="css/zui.min.css" rel="stylesheet">
+    <link href="css/zui-theme.css" rel="stylesheet">
+    <link href="css/header.css" rel="stylesheet">
+    <link href="css/footer.css" rel="stylesheet">
+    <style type="text/css">
+        .input-group>span {
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">图书管理系统</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="book-search.html">图书管理</a></li>
+                <li class="active"><a href="#">借阅管理</a></li>
+                <li><a href="user-search.html">用户管理</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown dropdown-hover">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">WelCome，XXX!</a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-right" role="search">
+                <div class="input-group">
+                    <span class="input-group">
+                        <div class="input-group-btn">
+                            <!--<button type="button" class="btn btn-default dropdown-toggle nav-select-btn" data-toggle="dropdown">快速查找 <span class="caret"></span></button>-->
+                            <!--<ul class="dropdown-menu pull-right nav-select" role="menu">-->
+                            <!--<li><a href="javascript:void(0);" onclick="c(0)">快速查找</a></li>-->
+                            <!--<li><a>另一个选项</a></li>-->
+                            <!--<li><a>更多选项</a></li>-->
+                            <!--<li class="divider"></li>-->
+                            <!--<li><a>特别内容</a></li>-->
+                            <!--</ul>-->
+                            <select class="form-control" name="search_mod" style="border-top-left-radius: 4px; border-bottom-left-radius: 4px">
+                                <option value="fast">期间借阅</option>
+                                <option value="name"> - 按书名查找</option>
+                                <option value="author"> - 按作者查找</option>
+                                <option value="publisher"> - 按出版社查找</option>
+                                <option value="ISBN"> - 按ISBN查找</option>
+                                <option value="sNo"> - 按学号查找</option>
+                                <option value="sNo">过期借阅</option>
+                                <option value="sNo">已归还借阅</option>
+                            </select>
+                        </div>
+                        <input type="text" name="name" class="form-control" placeholder="搜索借阅...">
+                        <div class="input-group-btn">
+                            <button class="btn" type="submit"><i class="icon icon-search"></i></button>
+                        </div>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </nav>
+</header>
+<div id="addBook">
+    <div class="container">
+        <form role="form">
+            <div class="panel">
+                <div class="panel-heading">
+                    <a href="borrow-search.html"> 借阅管理</a> <i class="icon icon-chevron-right"></i><a href="borrow-add.html"> 添加借阅</a>
+                </div>
+                <div class="panel-body">
+                    <div class="row form-group">
+                        <div class="col-md-5">
+                            <div class="input-group">
+                                <span class="input-group-addon">学号</span>
+                                <input type="text" name="name" class="form-control" placeholder="学号">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-5">
+                            <div class="input-group">
+                                <span class="input-group-addon">ISBN</span>
+                                <input type="text" name="ISBN" class="form-control" placeholder="ISBN">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-5">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="radioOptionsExample" value="1"> 一个月
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="radioOptionsExample" value="2"> 三个月
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <button type="reset" class="btn"> 重置</button>
+                    <button type="submit" class="btn btn-primary"> 添加</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+
+<footer>
+    <div class="container">
+        <hr>
+        <h5>Power by Kurenai</h5>
+    </div>
+</footer>
+<!--<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>-->
+<script src="js/jquery.min.js"></script>
+<script src="js/zui.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

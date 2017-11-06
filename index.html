@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>登录</title>
+    <link href="css/zui.min.css" rel="stylesheet">
+    <link href="css/zui-theme.css" rel="stylesheet">
+    <link href="css/header.css" rel="stylesheet">
+    <link href="css/footer.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">图书管理系统</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="#">图书管理</a></li>
+                <li><a href="#">图书借阅</a></li>
+                <li><a href="#">用户管理</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown dropdown-hover">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">WelCome，XXX!</a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div id="login">
+    <div class="container">
+        <div id="block">
+            <div id="welcome" class="col-sm-offset-4 col-sm-4">
+                <span>Welcome</span>
+            </div>
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-8">
+                        <label for="username" class="control-label">用户名</label>
+                        <input type="text" class="form-control" id="username" placeholder="请输入帐户名">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-8">
+                        <label for="password" class="control-label">密码</label>
+                        <input type="text" class="form-control" id="password" placeholder="请输入密码">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox">请记住我
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button id="login-button" type="submit" class="btn btn-default">登录</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="container">
+        <hr>
+        <h5>Power by Kurenai</h5>
+    </div>
+
+</footer>
+<!--<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>-->
+<script src="js/jquery.min.js"></script>
+<script src="js/zui.min.js"></script>
+<script src="js/login.js"></script>
+<script>
+</script>
+</body>
+</html>
